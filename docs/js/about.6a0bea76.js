@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkwhatsup_messenger"]=self["webpackChunkwhatsup_messenger"]||[]).push([[443],{7381:function(e,n,s){s.r(n),s.d(n,{default:function(){return f}});var u=s(3396);const t={class:"about"},a=(0,u._)("h1",null,"This is an about page",-1),r=[a];function c(e,n){return(0,u.wg)(),(0,u.iD)("div",t,r)}var i=s(89);const h={},o=(0,i.Z)(h,[["render",c]]);var f=o}}]);
+//# sourceMappingURL=about.6a0bea76.js.map
