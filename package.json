@@ -6,10 +6,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "sass-desktop":"sass -w assets/sass/desktop.sass:public/css/desktop.css",
-    "sass-mobile":"sass -w assets/sass/mobile.sass:public/css/mobile.css"
+    "sass-desktop": "sass -w assets/sass/desktop.sass:public/css/desktop.css",
+    "sass-mobile": "sass -w assets/sass/mobile.sass:public/css/mobile.css"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.35.2",
     "core-js": "^3.8.3",
     "sass": "^1.50.1",
     "vue": "^3.2.13",
