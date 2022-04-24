@@ -35,7 +35,7 @@
           v-model="password2"          
         />
         <CustomButton
-          @click.prevent="confirm"
+          @do-click="confirm"
           type="submit"
           text="Sign up"
         />
