@@ -57,13 +57,17 @@
 </template>
 
 <script>
-import CustomInput from '@/components/CustomInput'
+import CustomInput from '@/components/CustomInput';
 import CustomButton from '@/components/CustomButton';
+import NProgress from "nprogress";
 
 const limitName = 4;
 
 export default {
   name: 'SignupPage',
+  mounted() {
+    console.log(process.env.VUE_APP_URL_API);
+  },
   data() {
     return {
       name:'',
@@ -93,18 +97,28 @@ export default {
       if (this.name.trim().length < limitName){
         this.nameError = true;
       }
-
       //Email
+      if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.email)){
+        this.emailError = true;
+      }
 
       //Password
+
+      if(this.password.trim().length===0 || this.password != this.password2){
+        this.passwordError = true;
+      }
       
       if(!this.nameError
       && !this.emailError
       && !this.passwordError){
-        alert('Everything is correct');
+        //Save data
+        this.createUser();
+        
       }
-      
-
+    },
+    async createUser(){
+      NProgress.start();
+ 
     }
     
   },

@@ -1,14 +1,14 @@
 <template>
   <div class="input">
-    <label class="label">
+    <label class="input__label">
       {{label}}
       <input
         class="input__field"
         :type="type"
         :placeholder="placeholder"        
         :value="modelValue"
-        :class="{'input__error':'showErrors'}"
-        @input="$emit('update:modelValue',$event.target.value)"
+        :class="{'input__error': showErrors }"
+        @input="$emit('update:modelValue', $event.target.value)"
       >
     </label>
     <ul v-if="showErrors" class="input__errors">
