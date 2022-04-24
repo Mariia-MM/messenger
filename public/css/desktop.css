@@ -413,6 +413,14 @@ template {
     transform: rotate(360deg);
   }
 }
+.text-s {
+  font-size: 0.8rem;
+}
+
+.text-semi-bold {
+  font-weight: 600;
+}
+
 /* * Remove initial styles <ul>
  * *
  * * Examples: @include ulReset()
@@ -489,6 +497,39 @@ button:disabled {
 }
 .input__errors li {
   margin-top: 1rem;
+}
+
+.single-post {
+  display: grid;
+  row-gap: 0.75rem;
+  padding: 1rem;
+  background-color: rgba(56, 193, 255, 0.25);
+  border-radius: 1.25rem 1.25rem 1.25rem 0;
+  width: 75%;
+}
+.single-post.my {
+  background-color: rgba(128, 0, 128, 0.25);
+  border-radius: 1.25rem 1.25rem 0 1.25rem;
+  margin-left: auto;
+}
+.single-post p {
+  margin: unset;
+}
+.single-post__header {
+  display: grid;
+  grid-template-colums: 1fr auto;
+  column-gap: 0.5rem;
+}
+.single-post .button {
+  width: max-content;
+  margin-left: auto;
+}
+
+.home__posts {
+  display: grid;
+  row-gap: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 /*# sourceMappingURL=desktop.css.map */

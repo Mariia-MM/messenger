@@ -62,8 +62,10 @@ export default {
       if (error) {
         alert(error.message);
       } else {
-          this.message="";
-        alert("ok,message sent")
+          
+          this.message = "";
+          alert("ok,message sent");
+        
       }
     }
   }
