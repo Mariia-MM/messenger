@@ -38,7 +38,6 @@
           @click.prevent="confirm"
           type="submit"
           text="Sign up"
-        
         />
 
 
@@ -60,14 +59,16 @@
 import CustomInput from '@/components/CustomInput';
 import CustomButton from '@/components/CustomButton';
 import NProgress from "nprogress";
+import supabase from '@/mixins/supabase.js';
+
 
 const limitName = 4;
 
 export default {
   name: 'SignupPage',
   mounted() {
-    console.log(process.env.VUE_APP_URL_API);
   },
+  mixins:[supabase],
   data() {
     return {
       name:'',
@@ -76,7 +77,8 @@ export default {
       emailError: false,
       password:'',
       password2:'',
-      passwordError: false
+      passwordError: false,
+      supabase: undefined
       
 
     }
@@ -118,9 +120,28 @@ export default {
     },
     async createUser(){
       NProgress.start();
- 
+      const { user, session, error } = await this.supabase.auth.signUp({
+        email: this.email,
+        password: this.password,
+      })
+      if(user === null){
+        alert(error.message);
+      } else {
+        
+        // record name
+        await this.supabase.from('social_network-profile')
+        .insert(
+          [
+            { name: this.name, user_id: session.user.id}
+          ]
+        )
+
+        //move to log in page
+        this.$router.push({name:'login', query:{signup: true}})
+      }      
+      NProgress.done();
+      return session; 
     }
-    
-  },
+  }
 }
 </script>
