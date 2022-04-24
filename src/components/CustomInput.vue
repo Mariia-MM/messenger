@@ -6,12 +6,13 @@
         class="input__field"
         :type="type"
         :placeholder="placeholder"        
-        :value="value"
+        :value="modelValue"
         :class="{'input__error':'showErrors'}"
+        @input="$emit('update:modelValue',$event.target.value)"
       >
     </label>
     <ul v-if="showErrors" class="input__errors">
-      <li v-for="(error,key) in errorsList" :key="key">{{error}}</li>
+      <li v-for="(error,key) in errorsList" v-bind:key="key">{{error}}</li>
     </ul>
     
   </div>
@@ -26,7 +27,7 @@ export default {
     label: String,
     showErrors : Boolean,
     errorsList : Array,
-    value: String,
+    modelValue: String,
   }
 }
 </script>

@@ -7,14 +7,41 @@
           label="Name" 
           placeholder="Tell me your name" 
           type="text"
-          :showErrors="true"
-          :errorsList="['obligatory to write the name']"
+          v-model="name"
+          :showErrors="nameError"          
+          :errorsList="['The name have to contain more then 4 characters']"
         />
-        <CustomInput label="Email" placeholder="Tell me your email" type="email"/>
-        <CustomInput label="Password"  type="password"/>
-        <CustomInput label="Repeat password"  type="password"/>
-        <CustomInput type="submit" value="Sign up"/>
+        <CustomInput 
+          label="Email" 
+          placeholder="Tell me your email" 
+          type="email"
+          :showErrors="emailError"
+          v-model="email"
+          :errorsList="['obligatory to write the email','wrong email format']"
+        />
+        <CustomInput 
+          label="Password"  
+          type="password"
+          placeholder="Write password"
+          :showErrors="passwordError"
+          v-model="password"
+          :errorsList="['obligatory to write the password','passwords does not match']"
+        />
+        <CustomInput 
+          label="Repeat password"  
+          type="password"
+          placeholder="Repeat password"
+          :showErrors="passwordError"
+          v-model="password2"          
+        />
+        <CustomButton
+          @click.prevent="confirm"
+          type="submit"
+          text="Sign up"
         
+        />
+
+
       </form>
     </section>
 
@@ -31,11 +58,55 @@
 
 <script>
 import CustomInput from '@/components/CustomInput'
+import CustomButton from '@/components/CustomButton';
+
+const limitName = 4;
 
 export default {
   name: 'SignupPage',
+  data() {
+    return {
+      name:'',
+      nameError: false,
+      email:'',
+      emailError: false,
+      password:'',
+      password2:'',
+      passwordError: false
+      
+
+    }
+  },
   components: {
-    CustomInput
-  }
+    CustomInput,
+    CustomButton,
+    
+},
+  methods: {
+    confirm(){
+      //Clean old confirmations
+      this.nameError = false;
+      this.emailError = false;
+      this.passwordError = false;
+      //Name
+      //limit of characters to a limitName
+      if (this.name.trim().length < limitName){
+        this.nameError = true;
+      }
+
+      //Email
+
+      //Password
+      
+      if(!this.nameError
+      && !this.emailError
+      && !this.passwordError){
+        alert('Everything is correct');
+      }
+      
+
+    }
+    
+  },
 }
 </script>
